@@ -1,4 +1,4 @@
-# logmaskarator sample
+# logmaskarator
 
 Sensitive information should be kept out of your log files.
 
