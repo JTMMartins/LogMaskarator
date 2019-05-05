@@ -1,8 +1,10 @@
 # logmaskarator sample
 
-Remove sensitive information from your springboot with log4j2 applications.
+Sensitive information should be kept out of your log files.
 
-Currently configuration allows to remove.
+This little springboot experimental project uses Apache Log4j 2 as the logging framework and was created to understand how to configure Log4j2 LogEventConverter plugin to mask sensitive information.
+
+Current example allows to remove.
  * JWT tokens
  * Visa card Numbers
  * Visa 13 digit card numbers
@@ -12,9 +14,3 @@ Currently configuration allows to remove.
  * Discovery card numbers
  * JCB 15 digit card numbers
 
- 
- Currently configuration does NOT remove.
- * Does not work yet with
- * JCB 16 digits card numbers
- * Voyager card numbers
- * enRoute card numbers
