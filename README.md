@@ -13,7 +13,7 @@ Currently configuration allows to remove.
  * DinersClub card numbers
  * Discovery card numbers
  * JCB 15 digit card numbers
- * <p>
+<p>
  
  Currently configuration does NOT remove.
  * Does not work yet with
