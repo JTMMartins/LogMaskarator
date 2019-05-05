@@ -19,7 +19,7 @@ public class LogingApplication implements ApplicationRunner {
 	}
 
 	@Override
-	public void run(ApplicationArguments applicationArguments) {
+	public void run(final ApplicationArguments applicationArguments) {
 		logger.info("We have a  VISA CreditCard:4485845206032165, and another VISA CreditCard:4583903811386327 , we also have a CVV:234");
 		logger.info("We have a  AMERICAN EXPRESS CreditCard:344472003047574, and another AMERICAN EXPRESS CreditCard:376729481321792 , we also have a CVV:234");
 		logger.info("We have a  MASTERCARD CreditCard:5541836310917721, and another MASTERCARD CreditCard:5309023187132310 , we also have a CVV:234");

@@ -9,7 +9,7 @@ import java.util.regex.Matcher;
 import java.util.regex.Pattern;
 
 /**
- * Maskarator plugin for log4j2.
+ * Maskarator plugin.
  * Should be able to mask the following sensitive information
  * <p>
  * JWT tokens
@@ -59,17 +59,19 @@ public class LogMaskarator extends LogEventPatternConverter {
 	 * @param options
 	 * @return LogMaskarator
 	 */
-	public static LogMaskarator newInstance(String[] options) {
+	public static LogMaskarator newInstance(final String[] options) {
 		return new LogMaskarator("sensitive", Thread.currentThread().getName());
 	}
 
 	@Override
-	public void format(LogEvent event, StringBuilder outputMsg) {
-		final String msg = event.getMessage().getFormattedMessage();
+	public void format(final LogEvent event, final StringBuilder outputMsg) {
+		String msg = event.getMessage().getFormattedMessage() != null
+				? event.getMessage().getFormattedMessage()
+				: "";
 		String maskedMessage;
 		try {
 			maskedMessage = maskarate(msg);
-		} catch (Exception e) {
+		} catch (final Exception e) {
 			maskedMessage = msg;
 			// we should log this, as we cannot throw, as extended class does not throws exceptions
 		}
@@ -84,7 +86,7 @@ public class LogMaskarator extends LogEventPatternConverter {
 	 */
 	private String maskarate(String msg) {
 		Matcher matcher;
-		StringBuffer buffer = new StringBuffer();
+		final StringBuffer buffer = new StringBuffer();
 
 		matcher = JWT_PATTERN.matcher(msg);
 		maskMatcher(matcher, buffer, JWT_REPLACEMENT_MASK);
@@ -110,7 +112,7 @@ public class LogMaskarator extends LogEventPatternConverter {
 	 * @param maskStr
 	 * @return StringBuffer
 	 */
-	private StringBuffer maskMatcher(Matcher matcher, StringBuffer buffer, String maskStr) {
+	private StringBuffer maskMatcher(final Matcher matcher, final StringBuffer buffer, final String maskStr) {
 		while (matcher.find()) {
 			matcher.appendReplacement(buffer, maskStr);
 		}
